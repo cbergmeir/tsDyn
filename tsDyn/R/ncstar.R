@@ -1,5 +1,5 @@
 ## Copyright (C) 2005, 2006, 2007, 2008  Antonio, Fabio Di Narzo;
-##                                                           José Luis Aznarte M.
+##                                                           Josï¿½ Luis Aznarte M.
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -70,7 +70,7 @@ FF.ncstar <- function(phi1, phi2omega, xx) {
   trfun <- cbind(1, GG(xx %*% omega, gamma, th))
   local <- (x_t %*% t(phi1)) * trfun;
 
-# Variante original (ídem, en bucle)
+# Variante original (ï¿½dem, en bucle)
 #  local <- array(0, c(noRegimes, NROW(xx)))
 #  for (i in 1:noRegimes) 
 #    local[i,] <- (x_t %*% phi1[i,]) * trfun[,i]
@@ -972,8 +972,8 @@ estimateParams.ncstar <- function(object, trace=TRUE,
     res <- try(nls.lm(par=par, fn=SS.lm, jac = gradEhat.lm,
                   control=nls.lm.control(nprint=100, maxfev=1e+9, maxiter=1024)));
   } else if (alg == "BFGS") {
-    res <- optim(par, fn=SS, gr = gradEhat, method = alg,
-                  control = list(trace=0, hessian = FALSE, maxit=1000));
+    res <- optim(par, fn=SS, gr = gradEhat, method = alg, hessian = FALSE,
+                  control = list(trace=0, maxit=1000));
   } else if (alg == "SANN") {
     res <- optim(par, fn=SS, method = alg,
                   control = list(trace=0, maxit=20000, temp=200,tmax=50));
